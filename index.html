@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✈️ Airplanes Games</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Fredoka', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #4A90D9 0%, #87CEEB 40%, #B0E0F0 70%, #4CAF50 85%, #2E7D32 100%);
+    background-attachment: fixed;
+    padding: 20px;
+  }
+  header {
+    text-align: center;
+    padding: 30px 0 20px;
+  }
+  header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 3px 0 rgba(0,0,0,0.2);
+  }
+  header p {
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+    margin-top: 6px;
+  }
+  .sun {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    width: 70px;
+    height: 70px;
+    background: #FFF176;
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(255,241,118,0.5);
+    z-index: 0;
+  }
+  .cloud {
+    position: fixed;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50px;
+    z-index: 0;
+  }
+  .cloud-1 { width: 160px; height: 50px; top: 60px; left: 8%; animation: drift 40s linear infinite; }
+  .cloud-2 { width: 120px; height: 40px; top: 120px; left: 55%; animation: drift 55s linear infinite; }
+  .cloud-3 { width: 180px; height: 55px; top: 40px; left: 30%; animation: drift 65s linear infinite; }
+  @keyframes drift {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(60px); }
+    100% { transform: translateX(0); }
+  }
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 960px;
+    margin: 20px auto 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .game-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .game-card:active {
+    transform: translateY(-1px);
+  }
+  .card-icon {
+    font-size: 44px;
+    line-height: 1;
+  }
+  .card-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+  }
+  .card-tag {
+    display: inline-block;
+    background: #E3F2FD;
+    color: #1565C0;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  .card-tag.green { background: #E8F5E9; color: #2E7D32; }
+  .card-tag.orange { background: #FFF3E0; color: #E65100; }
+  .card-tag.purple { background: #F3E5F5; color: #6A1B9A; }
+  .card-tag.red { background: #FFEBEE; color: #C62828; }
+  .card-dots {
+    font-size: 18px;
+    color: #999;
+    letter-spacing: 2px;
+  }
+  .card-dots .filled { color: #FF9800; }
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  @media (max-width: 600px) {
+    header h1 { font-size: 36px; }
+    .games-grid { grid-template-columns: 1fr; }
+    .sun { width: 50px; height: 50px; top: 16px; right: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sun"></div>
+<div class="cloud cloud-1"></div>
+<div class="cloud cloud-2"></div>
+<div class="cloud cloud-3"></div>
+
+<header>
+  <h1>✈️ Airplanes Games</h1>
+  <p>Fun flying games for little pilots!</p>
+</header>
+
+<div class="games-grid">
+
+  <a href="landing-path.html" class="game-card">
+    <div class="card-icon">🛬</div>
+    <div class="card-title">Landing Path</div>
+    <span class="card-tag">Spatial Reasoning</span>
+    <div class="card-dots">
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+      <span>●</span>
+    </div>
+  </a>
+
+  <a href="pattern-lab.html" class="game-card">
+    <div class="card-icon">🔬</div>
+    <div class="card-title">Pattern Lab</div>
+    <span class="card-tag green">Pattern Recognition</span>
+    <div class="card-dots">
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+      <span>●</span>
+    </div>
+  </a>
+
+  <a href="logic-hangar.html" class="game-card">
+    <div class="card-icon">🏗️</div>
+    <div class="card-title">Logic Hangar</div>
+    <span class="card-tag purple">Matching &amp; Sorting</span>
+    <div class="card-dots">
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+      <span>●</span>
+    </div>
+  </a>
+
+  <a href="flight-path.html" class="game-card">
+    <div class="card-icon">🗺️</div>
+    <div class="card-title">Flight Path</div>
+    <span class="card-tag orange">Problem Solving</span>
+    <div class="card-dots">
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+    </div>
+  </a>
+
+  <a href="cargo-count.html" class="game-card">
+    <div class="card-icon">📦</div>
+    <div class="card-title">Cargo Count</div>
+    <span class="card-tag red">Counting</span>
+    <div class="card-dots">
+      <span class="filled">●</span>
+      <span>●</span>
+      <span>●</span>
+    </div>
+  </a>
+
+</div>
+
+<footer>airplanes.games</footer>
+
+</body>
+</html>
