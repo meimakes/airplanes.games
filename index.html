@@ -180,24 +180,34 @@
   .card-tag.orange { background: #FFF3E0; color: #E65100; }
   .card-tag.purple { background: #F3E5F5; color: #6A1B9A; }
   .card-tag.red { background: #FFEBEE; color: #C62828; }
+  .card-desc {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.4;
+  }
   /* Play button */
   .card-play {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-top: 6px;
+    margin-top: auto;
     padding: 10px 0;
     background: #4A90D9;
     color: #fff;
     border-radius: 12px;
     font-size: 16px;
     font-weight: 600;
-    transition: background 0.2s;
+    transition: filter 0.2s;
   }
   .game-card:hover .card-play {
-    background: #3a7bc8;
+    filter: brightness(0.9);
   }
+  .card-play.blue { background: #1565C0; }
+  .card-play.green { background: #2E7D32; }
+  .card-play.purple { background: #6A1B9A; }
+  .card-play.orange { background: #E65100; }
+  .card-play.red { background: #C62828; }
   .play-icon {
     width: 0;
     height: 0;
@@ -296,11 +306,9 @@
   <h1>✈️ Playful Learning for Future Pilots</h1>
   <p>Ignite your child's STEM journey with pattern recognition, logic, and problem-solving games designed for curious minds.</p>
   <div class="hero-planes">
-    <img class="hero-plane hp1" src="assets/plane-8.png" alt="Antonov">
-    <img class="hero-plane hp2" src="assets/plane-5.png" alt="Airbus A380">
-    <img class="hero-plane hp3" src="assets/plane-7.png" alt="Concorde">
-    <img class="hero-plane hp4" src="assets/plane-6.png" alt="Boeing 747">
-    <img class="hero-plane hp5" src="assets/plane-4.png" alt="Helicopter">
+    <img class="hero-plane hp1" src="assets/plane-1.png" alt="Cessna">
+    <img class="hero-plane hp2" src="assets/plane-2.png" alt="Spitfire">
+    <img class="hero-plane hp3" src="assets/plane-6.png" alt="Boeing 747">
   </div>
 </header>
 
@@ -315,7 +323,8 @@
     <div class="card-icon">🛬</div>
     <div class="card-title">Landing Path</div>
     <span class="card-tag">Spatial Reasoning</span>
-    <div class="card-play"><span class="play-icon"></span> Play</div>
+    <div class="card-desc">Trace the glide path to guide your plane safely to the runway.</div>
+    <div class="card-play blue"><span class="play-icon"></span> Play</div>
   </a>
 
   <a href="pattern-lab.html" class="game-card">
@@ -327,7 +336,8 @@
     <div class="card-icon">🔬</div>
     <div class="card-title">Pattern Lab</div>
     <span class="card-tag green">Pattern Recognition</span>
-    <div class="card-play"><span class="play-icon"></span> Play</div>
+    <div class="card-desc">Spot the repeating sequence and drag the right plane to complete it.</div>
+    <div class="card-play green"><span class="play-icon"></span> Play</div>
   </a>
 
   <a href="logic-hangar.html" class="game-card">
@@ -339,7 +349,8 @@
     <div class="card-icon">🏗️</div>
     <div class="card-title">Logic Hangar</div>
     <span class="card-tag purple">Matching &amp; Sorting</span>
-    <div class="card-play"><span class="play-icon"></span> Play</div>
+    <div class="card-desc">Match each airplane to its hangar by looking carefully at the signs.</div>
+    <div class="card-play purple"><span class="play-icon"></span> Play</div>
   </a>
 
   <a href="flight-path.html" class="game-card">
@@ -351,7 +362,8 @@
     <div class="card-icon">🗺️</div>
     <div class="card-title">Flight Path</div>
     <span class="card-tag orange">Problem Solving</span>
-    <div class="card-play"><span class="play-icon"></span> Play</div>
+    <div class="card-desc">Navigate a maze while dodging storm clouds to reach the runway.</div>
+    <div class="card-play orange"><span class="play-icon"></span> Play</div>
   </a>
 
   <a href="cargo-count.html" class="game-card">
@@ -363,7 +375,8 @@
     <div class="card-icon">📦</div>
     <div class="card-title">Cargo Count</div>
     <span class="card-tag red">Counting</span>
-    <div class="card-play"><span class="play-icon"></span> Play</div>
+    <div class="card-desc">Count the cargo boxes as they load up, then tap the right number.</div>
+    <div class="card-play red"><span class="play-icon"></span> Play</div>
   </a>
 
 </div>
