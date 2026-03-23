@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✈️ Airplanes Games</title>
+<title>✈️ Airplanes Games — Playful Learning for Future Pilots</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,18 +16,24 @@
   }
   header {
     text-align: center;
-    padding: 30px 0 20px;
+    padding: 30px 20px 20px;
+    position: relative;
+    z-index: 1;
   }
   header h1 {
-    font-size: 48px;
+    font-size: 44px;
     font-weight: 700;
     color: #fff;
     text-shadow: 2px 3px 0 rgba(0,0,0,0.2);
   }
   header p {
-    font-size: 20px;
-    color: rgba(255,255,255,0.9);
-    margin-top: 6px;
+    font-size: 18px;
+    color: rgba(255,255,255,0.92);
+    margin-top: 10px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
   }
   .sun {
     position: fixed;
@@ -40,18 +46,36 @@
     box-shadow: 0 0 40px rgba(255,241,118,0.5);
     z-index: 0;
   }
+  /* Realistic fluffy clouds */
   .cloud {
     position: fixed;
-    background: rgba(255,255,255,0.5);
-    border-radius: 50px;
     z-index: 0;
   }
-  .cloud-1 { width: 160px; height: 50px; top: 60px; left: 8%; animation: drift 40s linear infinite; }
-  .cloud-2 { width: 120px; height: 40px; top: 120px; left: 55%; animation: drift 55s linear infinite; }
-  .cloud-3 { width: 180px; height: 55px; top: 40px; left: 30%; animation: drift 65s linear infinite; }
+  .cloud div {
+    position: absolute;
+    background: rgba(255,255,255,0.55);
+    border-radius: 50%;
+  }
+  .cloud-1 { top: 50px; left: 6%; animation: drift 45s ease-in-out infinite; }
+  .cloud-1 .c1 { width: 100px; height: 70px; top: 20px; left: 0; }
+  .cloud-1 .c2 { width: 130px; height: 90px; top: 0; left: 40px; }
+  .cloud-1 .c3 { width: 110px; height: 70px; top: 15px; left: 100px; }
+  .cloud-1 .c4 { width: 80px; height: 55px; top: 30px; left: 150px; }
+
+  .cloud-2 { top: 100px; left: 52%; animation: drift 60s ease-in-out infinite reverse; }
+  .cloud-2 .c1 { width: 80px; height: 55px; top: 15px; left: 0; }
+  .cloud-2 .c2 { width: 100px; height: 70px; top: 0; left: 30px; }
+  .cloud-2 .c3 { width: 90px; height: 60px; top: 10px; left: 80px; }
+
+  .cloud-3 { top: 30px; left: 28%; animation: drift 70s ease-in-out infinite; }
+  .cloud-3 .c1 { width: 70px; height: 50px; top: 18px; left: 0; }
+  .cloud-3 .c2 { width: 110px; height: 75px; top: 0; left: 25px; }
+  .cloud-3 .c3 { width: 90px; height: 60px; top: 12px; left: 80px; }
+  .cloud-3 .c4 { width: 60px; height: 45px; top: 25px; left: 130px; }
+
   @keyframes drift {
     0% { transform: translateX(0); }
-    50% { transform: translateX(60px); }
+    50% { transform: translateX(50px); }
     100% { transform: translateX(0); }
   }
   .games-grid {
@@ -59,7 +83,7 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     max-width: 960px;
-    margin: 20px auto 40px;
+    margin: 24px auto 40px;
     position: relative;
     z-index: 1;
   }
@@ -74,6 +98,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    position: relative;
   }
   .game-card:hover {
     transform: translateY(-4px);
@@ -82,6 +107,16 @@
   .game-card:active {
     transform: translateY(-1px);
   }
+  /* Dots in top-right */
+  .card-dots {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    font-size: 16px;
+    color: #ddd;
+    letter-spacing: 2px;
+  }
+  .card-dots .filled { color: #FF9800; }
   .card-icon {
     font-size: 44px;
     line-height: 1;
@@ -105,12 +140,31 @@
   .card-tag.orange { background: #FFF3E0; color: #E65100; }
   .card-tag.purple { background: #F3E5F5; color: #6A1B9A; }
   .card-tag.red { background: #FFEBEE; color: #C62828; }
-  .card-dots {
-    font-size: 18px;
-    color: #999;
-    letter-spacing: 2px;
+  /* Play button */
+  .card-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 10px 0;
+    background: #4A90D9;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background 0.2s;
   }
-  .card-dots .filled { color: #FF9800; }
+  .game-card:hover .card-play {
+    background: #3a7bc8;
+  }
+  .play-icon {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 0 7px 12px;
+    border-color: transparent transparent transparent #fff;
+  }
   footer {
     text-align: center;
     padding: 20px;
@@ -120,7 +174,8 @@
     z-index: 1;
   }
   @media (max-width: 600px) {
-    header h1 { font-size: 36px; }
+    header h1 { font-size: 32px; }
+    header p { font-size: 16px; }
     .games-grid { grid-template-columns: 1fr; }
     .sun { width: 50px; height: 50px; top: 16px; right: 16px; }
   }
@@ -129,70 +184,75 @@
 <body>
 
 <div class="sun"></div>
-<div class="cloud cloud-1"></div>
-<div class="cloud cloud-2"></div>
-<div class="cloud cloud-3"></div>
+<div class="cloud cloud-1"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div>
+<div class="cloud cloud-2"><div class="c1"></div><div class="c2"></div><div class="c3"></div></div>
+<div class="cloud cloud-3"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div>
 
 <header>
-  <h1>✈️ Airplanes Games</h1>
-  <p>Fun flying games for little pilots!</p>
+  <h1>✈️ Playful Learning for Future Pilots</h1>
+  <p>Ignite your child's STEM journey with pattern recognition, logic, and problem-solving games designed for curious minds.</p>
 </header>
 
 <div class="games-grid">
 
   <a href="landing-path.html" class="game-card">
+    <div class="card-dots">
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+      <span>●</span>
+    </div>
     <div class="card-icon">🛬</div>
     <div class="card-title">Landing Path</div>
     <span class="card-tag">Spatial Reasoning</span>
-    <div class="card-dots">
-      <span class="filled">●</span>
-      <span class="filled">●</span>
-      <span>●</span>
-    </div>
+    <div class="card-play"><span class="play-icon"></span> Play</div>
   </a>
 
   <a href="pattern-lab.html" class="game-card">
+    <div class="card-dots">
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+      <span>●</span>
+    </div>
     <div class="card-icon">🔬</div>
     <div class="card-title">Pattern Lab</div>
     <span class="card-tag green">Pattern Recognition</span>
-    <div class="card-dots">
-      <span class="filled">●</span>
-      <span class="filled">●</span>
-      <span>●</span>
-    </div>
+    <div class="card-play"><span class="play-icon"></span> Play</div>
   </a>
 
   <a href="logic-hangar.html" class="game-card">
+    <div class="card-dots">
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+      <span>●</span>
+    </div>
     <div class="card-icon">🏗️</div>
     <div class="card-title">Logic Hangar</div>
     <span class="card-tag purple">Matching &amp; Sorting</span>
-    <div class="card-dots">
-      <span class="filled">●</span>
-      <span class="filled">●</span>
-      <span>●</span>
-    </div>
+    <div class="card-play"><span class="play-icon"></span> Play</div>
   </a>
 
   <a href="flight-path.html" class="game-card">
+    <div class="card-dots">
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+      <span class="filled">●</span>
+    </div>
     <div class="card-icon">🗺️</div>
     <div class="card-title">Flight Path</div>
     <span class="card-tag orange">Problem Solving</span>
-    <div class="card-dots">
-      <span class="filled">●</span>
-      <span class="filled">●</span>
-      <span class="filled">●</span>
-    </div>
+    <div class="card-play"><span class="play-icon"></span> Play</div>
   </a>
 
   <a href="cargo-count.html" class="game-card">
-    <div class="card-icon">📦</div>
-    <div class="card-title">Cargo Count</div>
-    <span class="card-tag red">Counting</span>
     <div class="card-dots">
       <span class="filled">●</span>
       <span>●</span>
       <span>●</span>
     </div>
+    <div class="card-icon">📦</div>
+    <div class="card-title">Cargo Count</div>
+    <span class="card-tag red">Counting</span>
+    <div class="card-play"><span class="play-icon"></span> Play</div>
   </a>
 
 </div>
