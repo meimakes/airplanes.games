@@ -165,6 +165,69 @@
     border-width: 7px 0 7px 12px;
     border-color: transparent transparent transparent #fff;
   }
+  .age-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.9);
+    color: #4A90D9;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 20px;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+  .why-play {
+    background: rgba(255,255,255,0.92);
+    border-radius: 24px;
+    max-width: 960px;
+    margin: 10px auto 30px;
+    padding: 40px 30px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .why-play h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .why-sub {
+    font-size: 16px;
+    color: #666;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    line-height: 1.5;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .why-card {
+    border-radius: 16px;
+    padding: 24px 18px;
+    text-align: center;
+  }
+  .why-blue { background: #EBF4FF; border: 2px solid #D0E4FF; }
+  .why-pink { background: #FFF0F3; border: 2px solid #FFD6DE; }
+  .why-yellow { background: #FFFBE6; border: 2px solid #FFF0B3; }
+  .why-green { background: #E8F5E9; border: 2px solid #C8E6C9; }
+  .why-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  .why-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  .why-card p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
   footer {
     text-align: center;
     padding: 20px;
@@ -189,6 +252,7 @@
 <div class="cloud cloud-3"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div>
 
 <header>
+  <div class="age-badge">AGES 3–5</div>
   <h1>✈️ Playful Learning for Future Pilots</h1>
   <p>Ignite your child's STEM journey with pattern recognition, logic, and problem-solving games designed for curious minds.</p>
 </header>
@@ -256,6 +320,33 @@
   </a>
 
 </div>
+
+<section class="why-play">
+  <h2>Why Play Matters</h2>
+  <p class="why-sub">The seeds of computational thinking can be planted early through joyful, age-appropriate play.</p>
+  <div class="why-grid">
+    <div class="why-card why-blue">
+      <div class="why-icon">🧩</div>
+      <h3>Pattern Recognition</h3>
+      <p>Spot sequences, predict what comes next, and build the foundation for mathematical thinking.</p>
+    </div>
+    <div class="why-card why-pink">
+      <div class="why-icon">🧠</div>
+      <h3>Logical Thinking</h3>
+      <p>Follow clues, match by rules, and develop the reasoning skills that power future coding.</p>
+    </div>
+    <div class="why-card why-yellow">
+      <div class="why-icon">🗺️</div>
+      <h3>Problem Solving</h3>
+      <p>Navigate mazes, plan ahead, and learn that mistakes are just part of finding the answer.</p>
+    </div>
+    <div class="why-card why-green">
+      <div class="why-icon">🔢</div>
+      <h3>Counting & Quantity</h3>
+      <p>Build number sense through hands-on counting, connecting abstract numbers to real objects.</p>
+    </div>
+  </div>
+</section>
 
 <footer>airplanes.games</footer>
 
