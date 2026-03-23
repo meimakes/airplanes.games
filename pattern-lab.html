@@ -41,19 +41,19 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 80px 16px 30px;
-    gap: 30px;
+    padding: 70px 10px 20px;
+    gap: 40px;
   }
   .pattern-row {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
   }
   .pattern-slot {
-    width: 100px;
-    height: 100px;
+    width: min(15vw, 140px);
+    height: min(15vw, 140px);
     background: rgba(255,255,255,0.3);
     border-radius: 16px;
     display: flex;
@@ -63,18 +63,18 @@
     position: relative;
   }
   .pattern-slot img {
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 85%;
+    max-height: 85%;
     pointer-events: none;
   }
   .pattern-slot.mystery {
     border: 3px dashed #FF9800;
     background: rgba(255,152,0,0.15);
-    min-width: 100px;
-    min-height: 100px;
+    min-width: min(15vw, 140px);
+    min-height: min(15vw, 140px);
   }
   .pattern-slot.mystery .q-mark {
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 700;
     color: #FF9800;
   }
@@ -90,14 +90,14 @@
   }
   .choices-row {
     display: flex;
-    gap: 14px;
+    gap: 20px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
   }
   .choice-card {
-    width: 110px;
-    height: 110px;
+    width: min(18vw, 150px);
+    height: min(18vw, 150px);
     background: #fff;
     border-radius: 18px;
     display: flex;
@@ -111,8 +111,8 @@
   .choice-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
   .choice-card:active { cursor: grabbing; }
   .choice-card img {
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 85%;
+    max-height: 85%;
     pointer-events: none;
   }
   .choice-card.shake {
@@ -178,10 +178,9 @@
     max-height: 80px;
   }
   @media (max-width: 600px) {
-    .pattern-slot { width: 75px; height: 75px; }
-    .pattern-slot img { max-width: 58px; max-height: 58px; }
-    .choice-card { width: 90px; height: 90px; }
-    .choice-card img { max-width: 65px; max-height: 65px; }
+    .pattern-slot { width: min(14vw, 85px); height: min(14vw, 85px); }
+    .pattern-slot.mystery { min-width: min(14vw, 85px); min-height: min(14vw, 85px); }
+    .choice-card { width: min(22vw, 110px); height: min(22vw, 110px); }
     .pattern-slot.mystery .q-mark { font-size: 36px; }
   }
 </style>
