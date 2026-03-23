@@ -35,6 +35,46 @@
     margin-right: auto;
     line-height: 1.5;
   }
+  .hero-planes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-plane {
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.2));
+  }
+  .hp1 { animation: float1 4s ease-in-out infinite; }
+  .hp2 { animation: float2 5s ease-in-out infinite; }
+  .hp3 { animation: float3 4.5s ease-in-out infinite; }
+  .hp4 { animation: float4 5.5s ease-in-out infinite; }
+  .hp5 { animation: float5 3.8s ease-in-out infinite; }
+  @keyframes float1 {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-12px) rotate(1deg); }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translateY(0) rotate(1deg); }
+    50% { transform: translateY(-16px) rotate(-1deg); }
+  }
+  @keyframes float3 {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+  }
+  @keyframes float4 {
+    0%, 100% { transform: translateY(0) rotate(2deg); }
+    50% { transform: translateY(-14px) rotate(-2deg); }
+  }
+  @keyframes float5 {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-18px) rotate(1deg); }
+  }
   .sun {
     position: fixed;
     top: 30px;
@@ -255,6 +295,13 @@
   <div class="age-badge">AGES 3–5</div>
   <h1>✈️ Playful Learning for Future Pilots</h1>
   <p>Ignite your child's STEM journey with pattern recognition, logic, and problem-solving games designed for curious minds.</p>
+  <div class="hero-planes">
+    <img class="hero-plane hp1" src="assets/plane-8.png" alt="Antonov">
+    <img class="hero-plane hp2" src="assets/plane-5.png" alt="Airbus A380">
+    <img class="hero-plane hp3" src="assets/plane-7.png" alt="Concorde">
+    <img class="hero-plane hp4" src="assets/plane-6.png" alt="Boeing 747">
+    <img class="hero-plane hp5" src="assets/plane-4.png" alt="Helicopter">
+  </div>
 </header>
 
 <div class="games-grid">
