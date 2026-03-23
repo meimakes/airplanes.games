@@ -1,6 +1,6 @@
 # ✈️ airplanes.games
 
-Playful learning for future pilots. 5 educational games designed for ages 3–5 that build pattern recognition, logic, spatial reasoning, counting, and problem-solving skills — all through airplanes.
+Playful learning for future pilots. Educational games designed for ages 3–5 that build pattern recognition, logic, spatial reasoning, counting, and problem-solving skills — all through airplanes.
 
 ## Games
 
