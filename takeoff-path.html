@@ -336,9 +336,21 @@ function findClosestPathIndex(px, py) {
 function onStart(e) {
   e.preventDefault();
   if (audioCtx.state === 'suspended') audioCtx.resume();
-  if (gameState !== 'waiting') return;
+  if (gameState !== 'waiting' && gameState !== 'tracing') return;
 
   const pos = getPos(e);
+
+  // Resume from where we left off if finger was lifted mid-trace
+  if (gameState === 'tracing' && traceProgress > 0) {
+    const { idx, dist } = findClosestPathIndex(pos.x, pos.y);
+    const progressIdx = Math.floor(traceProgress * pathPoints.length);
+    if (dist < pathWidth * 2 && idx >= progressIdx - 10) {
+      isTracing = true;
+      tracePoints.push(pos);
+      return;
+    }
+  }
+
   // Must start near the beginning of the path (runway area)
   const { idx, dist } = findClosestPathIndex(pos.x, pos.y);
   if (idx < pathPoints.length * 0.15 && dist < pathWidth * 1.5) {
@@ -776,21 +788,30 @@ function drawPlane() {
   ctx.translate(plane.x, plane.y);
   ctx.rotate(plane.angle);
 
-  // Engine glow
-  const glowSize = 6 + Math.sin(gameTime * 15) * 3;
-  ctx.fillStyle = `rgba(255, 150, 0, 0.6)`;
+  // Engine glow (bigger for takeoff thrust!)
+  const glowSize = 8 + Math.sin(gameTime * 15) * 4;
+  ctx.fillStyle = `rgba(255, 180, 0, 0.7)`;
   ctx.beginPath();
-  ctx.ellipse(-30, 2, glowSize + 4, glowSize * 0.5, 0, 0, Math.PI * 2);
+  ctx.ellipse(-32, 2, glowSize + 6, glowSize * 0.6, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.fillStyle = `rgba(255, 100, 0, 0.4)`;
+  ctx.beginPath();
+  ctx.ellipse(-38, 2, glowSize + 2, glowSize * 0.3, 0, 0, Math.PI * 2);
   ctx.fill();
 
-  // Body
-  ctx.fillStyle = '#E0E0E0';
+  // Body (blue livery for takeoff)
+  ctx.fillStyle = '#4A90D9';
   ctx.beginPath();
   ctx.ellipse(0, 0, 28, 10, 0, 0, Math.PI * 2);
   ctx.fill();
+  // White belly stripe
+  ctx.fillStyle = '#fff';
+  ctx.beginPath();
+  ctx.ellipse(0, 4, 26, 4, 0, 0, Math.PI * 2);
+  ctx.fill();
 
   // Nose
-  ctx.fillStyle = '#FF4444';
+  ctx.fillStyle = '#FFD700';
   ctx.beginPath();
   ctx.moveTo(24, -5);
   ctx.lineTo(36, 0);
@@ -799,7 +820,7 @@ function drawPlane() {
   ctx.fill();
 
   // Wings
-  ctx.fillStyle = '#B0B0B0';
+  ctx.fillStyle = '#3a7bc8';
   ctx.beginPath();
   ctx.moveTo(-3, -7);
   ctx.lineTo(4, -22);
@@ -816,7 +837,7 @@ function drawPlane() {
   ctx.fill();
 
   // Tail
-  ctx.fillStyle = '#FF4444';
+  ctx.fillStyle = '#FFD700';
   ctx.beginPath();
   ctx.moveTo(-22, -5);
   ctx.lineTo(-28, -17);
@@ -826,7 +847,7 @@ function drawPlane() {
   ctx.fill();
 
   // Windows
-  ctx.fillStyle = '#87CEEB';
+  ctx.fillStyle = '#B0E0F0';
   for (let i = 0; i < 4; i++) {
     ctx.beginPath();
     ctx.arc(-6 + i * 7, -4, 2.5, 0, Math.PI * 2);

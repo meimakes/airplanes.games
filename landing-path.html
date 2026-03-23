@@ -337,9 +337,21 @@ function findClosestPathIndex(px, py) {
 function onStart(e) {
   e.preventDefault();
   if (audioCtx.state === 'suspended') audioCtx.resume();
-  if (gameState !== 'waiting') return;
+  if (gameState !== 'waiting' && gameState !== 'tracing') return;
 
   const pos = getPos(e);
+
+  // Resume from where we left off if finger was lifted mid-trace
+  if (gameState === 'tracing' && traceProgress > 0) {
+    const { idx, dist } = findClosestPathIndex(pos.x, pos.y);
+    const progressIdx = Math.floor(traceProgress * pathPoints.length);
+    if (dist < pathWidth * 2 && idx >= progressIdx - 10) {
+      isTracing = true;
+      tracePoints.push(pos);
+      return;
+    }
+  }
+
   // Must start near the beginning of the path
   const { idx, dist } = findClosestPathIndex(pos.x, pos.y);
   if (idx < pathPoints.length * 0.15 && dist < pathWidth * 1.5) {
