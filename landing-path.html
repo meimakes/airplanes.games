@@ -373,14 +373,15 @@ function onMove(e) {
   // Check if trace is close to path
   const { idx, dist } = findClosestPathIndex(pos.x, pos.y);
 
-  if (dist > pathWidth * 1.8) {
-    // Too far off path — show warning particles but don't fail
+  if (dist > pathWidth * 1.2) {
+    // Too far off path — stop the plane, show warning
     particles.push({
       x: pos.x, y: pos.y,
       vx: (Math.random() - 0.5) * 3,
       vy: -Math.random() * 2,
       size: 4, color: '#FF4444', life: 0.8
     });
+    return; // Don't advance — finger must stay on the path
   }
 
   // Update progress based on how far along the path we are
