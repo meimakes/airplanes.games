@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✈️</text></svg>">
+<title>✈️ Materials Catalog — Airplanes Games</title>
+<meta property="og:title" content="Materials Catalog — Airplanes Games">
+<meta property="og:description" content="Hands-on toys and tools we love for building STEM skills through play. Every item has been tested with real kids.">
+<meta property="og:url" content="https://airplanes.games/materials">
+<meta property="og:type" content="website">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Fredoka', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #4A90D9 0%, #87CEEB 40%, #B0E0F0 70%, #4CAF50 85%, #2E7D32 100%);
+    background-attachment: fixed;
+    padding: 20px;
+  }
+  .sun {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    width: 70px;
+    height: 70px;
+    background: #FFF176;
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(255,241,118,0.5);
+    z-index: 0;
+  }
+  .cloud { position: fixed; z-index: 0; }
+  .cloud div { position: absolute; background: rgba(255,255,255,0.2); border-radius: 50%; }
+  .cloud-1 { top: 50px; left: 6%; animation: drift 45s ease-in-out infinite; }
+  .cloud-1 .c1 { width: 100px; height: 70px; top: 20px; left: 0; }
+  .cloud-1 .c2 { width: 130px; height: 90px; top: 0; left: 40px; }
+  .cloud-1 .c3 { width: 110px; height: 70px; top: 15px; left: 100px; }
+  .cloud-1 .c4 { width: 80px; height: 55px; top: 30px; left: 150px; }
+  .cloud-2 { top: 100px; left: 52%; animation: drift 60s ease-in-out infinite reverse; }
+  .cloud-2 .c1 { width: 80px; height: 55px; top: 15px; left: 0; }
+  .cloud-2 .c2 { width: 100px; height: 70px; top: 0; left: 30px; }
+  .cloud-2 .c3 { width: 90px; height: 60px; top: 10px; left: 80px; }
+  .cloud-3 { top: 30px; left: 28%; animation: drift 70s ease-in-out infinite; }
+  .cloud-3 .c1 { width: 70px; height: 50px; top: 18px; left: 0; }
+  .cloud-3 .c2 { width: 110px; height: 75px; top: 0; left: 25px; }
+  .cloud-3 .c3 { width: 90px; height: 60px; top: 12px; left: 80px; }
+  .cloud-3 .c4 { width: 60px; height: 45px; top: 25px; left: 130px; }
+  @keyframes drift {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(50px); }
+    100% { transform: translateX(0); }
+  }
+
+  /* Page header */
+  .page-header {
+    text-align: center;
+    padding: 30px 20px 10px;
+    position: relative;
+    z-index: 1;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: #fff; }
+  .back-link svg { width: 16px; height: 16px; }
+  .page-header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 3px 0 rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+  }
+  .page-header p {
+    font-size: 17px;
+    color: rgba(255,255,255,0.92);
+    max-width: 560px;
+    margin: 0 auto 24px;
+    line-height: 1.5;
+  }
+
+  /* Search */
+  .search-wrap {
+    max-width: 420px;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+  .search-wrap svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    width: 18px; height: 18px;
+  }
+  .search-wrap input {
+    font-family: 'Fredoka', sans-serif;
+    width: 100%;
+    padding: 12px 16px 12px 42px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 16px;
+    background: rgba(255,255,255,0.9);
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-wrap input:focus {
+    border-color: #fff;
+    background: #fff;
+  }
+  .search-wrap input::placeholder { color: #aaa; }
+
+  /* Filter buttons */
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 960px;
+    margin: 0 auto 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .filter-btn {
+    font-family: 'Fredoka', sans-serif;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.85);
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover {
+    background: #fff;
+    border-color: #fff;
+  }
+  .filter-btn.active {
+    background: #1565C0;
+    color: #fff;
+    border-color: #1565C0;
+  }
+  .filter-btn .count {
+    margin-left: 6px;
+    font-size: 12px;
+    opacity: 0.7;
+  }
+  .showing-text {
+    text-align: center;
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Materials grid */
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+    max-width: 960px;
+    margin: 0 auto 40px;
+    position: relative;
+    z-index: 1;
+  }
+  .mat-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .mat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .mat-card.hidden { display: none; }
+  .mat-img-wrap {
+    width: 100%;
+    height: 180px;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .mat-img-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  .mat-info {
+    padding: 14px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+  .mat-cat {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 12px;
+    width: fit-content;
+  }
+  .mat-cat.aviation { background: #E3F2FD; color: #1565C0; }
+  .mat-cat.stem { background: #E8F5E9; color: #2E7D32; }
+  .mat-cat.logic { background: #F3E5F5; color: #6A1B9A; }
+  .mat-cat.geography { background: #FFF3E0; color: #E65100; }
+  .mat-cat.creative { background: #FFF0F3; color: #C62828; }
+  .mat-cat.outdoor { background: #FFFBE6; color: #827717; }
+  .mat-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.3;
+  }
+  .mat-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    padding: 8px 14px;
+    background: #4A90D9;
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: filter 0.2s;
+  }
+  .mat-link:hover { filter: brightness(0.9); }
+  .mat-link svg { width: 14px; height: 14px; }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  footer a { color: rgba(255,255,255,0.9); text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .page-header h1 { font-size: 28px; }
+    .page-header p { font-size: 15px; }
+    .materials-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .mat-img-wrap { height: 140px; }
+    .mat-name { font-size: 14px; }
+    .sun { width: 50px; height: 50px; top: 16px; right: 16px; }
+  }
+</style>
+<script async src="https://plausible.io/js/pa-npN8w62yxyktyIX5ssSBd.js"></script>
+<script>
+ window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+ plausible.init()
+</script>
+</head>
+<body>
+
+<div class="sun"></div>
+<div class="cloud cloud-1"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div>
+<div class="cloud cloud-2"><div class="c1"></div><div class="c2"></div><div class="c3"></div></div>
+<div class="cloud cloud-3"><div class="c1"></div><div class="c2"></div><div class="c3"></div><div class="c4"></div></div>
+
+<div class="page-header">
+  <a href="index.html" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+    Back to Games
+  </a>
+  <h1>🧸 Materials Catalog</h1>
+  <p>Hands-on toys and tools we love for building STEM skills through play. Every item has been tested with real kids.</p>
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="text" id="searchInput" placeholder="Search materials...">
+  </div>
+</div>
+
+<div class="filters" id="filters">
+  <button class="filter-btn active" data-cat="all">All<span class="count">14</span></button>
+  <button class="filter-btn" data-cat="Aviation & Flight">Aviation & Flight<span class="count">4</span></button>
+  <button class="filter-btn" data-cat="STEM & Engineering">STEM & Engineering<span class="count">1</span></button>
+  <button class="filter-btn" data-cat="Logic & Patterns">Logic & Patterns<span class="count">4</span></button>
+  <button class="filter-btn" data-cat="Geography & World">Geography & World<span class="count">3</span></button>
+  <button class="filter-btn" data-cat="Creative Play">Creative Play<span class="count">1</span></button>
+  <button class="filter-btn" data-cat="Outdoor & Practical">Outdoor & Practical<span class="count">1</span></button>
+</div>
+<div class="showing-text" id="showingText">Showing all 14 materials</div>
+
+<div class="materials-grid" id="grid">
+
+  <div class="mat-card" data-cat="Logic & Patterns" data-name="Fraction Puzzle">
+    <div class="mat-img-wrap"><img src="https://ucarecdn.com/18ea2ba4-9e2b-4d34-b9f4-51c5013cea4e/-/format/auto/" alt="Fraction Puzzle" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat logic">Logic & Patterns</span>
+      <div class="mat-name">Fraction Puzzle</div>
+      <a href="https://amzn.to/4ikv9en" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Creative Play" data-name="Buddha Board">
+    <div class="mat-img-wrap"><img src="https://m.media-amazon.com/images/I/71DCOGHCRVL._AC_UF480,480_SR480,480_.jpg" alt="Buddha Board" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat creative">Creative Play</span>
+      <div class="mat-name">Buddha Board</div>
+      <a href="https://amzn.to/4pxU9Bn" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="STEM & Engineering" data-name="Snap Circuits">
+    <div class="mat-img-wrap"><img src="https://m.media-amazon.com/images/I/911-NGDU1WL._AC_CR0%2C0%2C0%2C0_SX352_SY330_.jpg" alt="Snap Circuits" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat stem">STEM & Engineering</span>
+      <div class="mat-name">Snap Circuits</div>
+      <a href="https://amzn.to/489cdKL" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Outdoor & Practical" data-name="Stainless Steel Camping Plates">
+    <div class="mat-img-wrap"><img src="https://ucarecdn.com/6af62b75-c475-4da6-8bb8-47733a07aeb7/-/format/auto/" alt="Stainless Steel Camping Plates" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat outdoor">Outdoor & Practical</span>
+      <div class="mat-name">Stainless Steel Camping Plates</div>
+      <a href="https://amzn.to/44tmoJ4" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Aviation & Flight" data-name="Green Toys Airplane (BPA-free, recycled plastic, ages 1+)">
+    <div class="mat-img-wrap"><img src="https://m.media-amazon.com/images/I/71TZzuHV93L._AC_SY355_.jpg" alt="Green Toys Airplane" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat aviation">Aviation & Flight</span>
+      <div class="mat-name">Green Toys Airplane (BPA-free, recycled plastic, ages 1+)</div>
+      <a href="https://amzn.to/47L6jjw" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Aviation & Flight" data-name="PLAYSTEM Balsa Wood Glider Kit (4-pack, rubber band powered)">
+    <div class="mat-img-wrap"><img src="https://m.media-amazon.com/images/I/81VvFP2LfvL._AC_SS115_.jpg" alt="PLAYSTEM Balsa Wood Glider Kit" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat aviation">Aviation & Flight</span>
+      <div class="mat-name">PLAYSTEM Balsa Wood Glider Kit (4-pack, rubber band powered)</div>
+      <a href="https://amzn.to/4uD63x9" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Aviation & Flight" data-name="Pathfinders Leonardo da Vinci Helicopter Model Kit">
+    <div class="mat-img-wrap"><img src="https://m.media-amazon.com/images/I/61DPER88C9L._AC_SX679_.jpg" alt="Leonardo da Vinci Helicopter Model Kit" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat aviation">Aviation & Flight</span>
+      <div class="mat-name">Pathfinders Leonardo da Vinci Helicopter Model Kit</div>
+      <a href="https://amzn.to/4bILNT3" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Aviation & Flight" data-name="Puzzled Wooden Airplane Model Kit (4-pack)">
+    <div class="mat-img-wrap"><img src="https://m.media-amazon.com/images/I/41FTNzKtXUL._AC_SY450_.jpg" alt="Puzzled Wooden Airplane Model Kit" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat aviation">Aviation & Flight</span>
+      <div class="mat-name">Puzzled Wooden Airplane Model Kit (4-pack)</div>
+      <a href="https://amzn.to/4uAPCBu" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Geography & World" data-name="LeapFrog Magic Adventures Globe">
+    <div class="mat-img-wrap"><img src="https://ucarecdn.com/f5556327-f284-4534-a3b3-4b162b94249c/-/format/auto/" alt="LeapFrog Magic Adventures Globe" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat geography">Geography & World</span>
+      <div class="mat-name">LeapFrog Magic Adventures Globe</div>
+      <a href="https://amzn.to/4dnqqrK" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Geography & World" data-name="National Geographic Kids My First Atlas of the World">
+    <div class="mat-img-wrap"><img src="https://m.media-amazon.com/images/I/71IkIQYtvpL._SY522_.jpg" alt="National Geographic Kids Atlas" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat geography">Geography & World</span>
+      <div class="mat-name">National Geographic Kids My First Atlas of the World</div>
+      <a href="https://amzn.to/4cUhKZX" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Geography & World" data-name="National Geographic Kids Puzzle Book: On the Go">
+    <div class="mat-img-wrap"><img src="https://m.media-amazon.com/images/I/51fv4S+Sj7L._AC_.jpg" alt="National Geographic Kids Puzzle Book" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat geography">Geography & World</span>
+      <div class="mat-name">National Geographic Kids Puzzle Book: On the Go</div>
+      <a href="https://amzn.to/40y6Ykx" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Logic & Patterns" data-name="Melissa & Doug Pattern Blocks and Boards">
+    <div class="mat-img-wrap"><img src="https://ucarecdn.com/d2ec0fb8-c4d8-421f-b8db-0bff16bd542c/-/format/auto/" alt="Melissa & Doug Pattern Blocks" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat logic">Logic & Patterns</span>
+      <div class="mat-name">Melissa & Doug Pattern Blocks and Boards</div>
+      <a href="https://amzn.to/4rueaZR" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Logic & Patterns" data-name="ThinkFun Zingo">
+    <div class="mat-img-wrap"><img src="https://ucarecdn.com/c3dc322c-ed2b-4d2c-8f0d-f8627e3b69a8/-/format/auto/" alt="ThinkFun Zingo" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat logic">Logic & Patterns</span>
+      <div class="mat-name">ThinkFun Zingo</div>
+      <a href="https://amzn.to/4lxYbJ2" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+  <div class="mat-card" data-cat="Logic & Patterns" data-name="Learning Resources Attribute Block Set">
+    <div class="mat-img-wrap"><img src="https://ucarecdn.com/3e0d9c09-f41b-4e96-ad12-b2108c5f0661/-/format/auto/" alt="Learning Resources Attribute Block Set" loading="lazy"></div>
+    <div class="mat-info">
+      <span class="mat-cat logic">Logic & Patterns</span>
+      <div class="mat-name">Learning Resources Attribute Block Set</div>
+      <a href="https://amzn.to/4rIBvHG" target="_blank" rel="noopener" class="mat-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        View on Amazon
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div>Made by <a href="https://x.com/meimakes">@meimakes</a></div>
+  <div style="margin-top:6px;"><a href="https://buildwithyourkid.com">Want to make your own games with your kid?</a></div>
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.mat-card');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const searchInput = document.getElementById('searchInput');
+  const showingText = document.getElementById('showingText');
+
+  let activeCat = 'all';
+
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase().trim();
+    let visible = 0;
+    cards.forEach(card => {
+      const cat = card.dataset.cat;
+      const name = card.dataset.name.toLowerCase();
+      const catMatch = activeCat === 'all' || cat === activeCat;
+      const searchMatch = !query || name.includes(query) || cat.toLowerCase().includes(query);
+      const show = catMatch && searchMatch;
+      card.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    const label = activeCat === 'all' ? 'all' : activeCat;
+    showingText.textContent = query
+      ? `Showing ${visible} result${visible !== 1 ? 's' : ''} for "${searchInput.value}"`
+      : `Showing ${visible} ${label === 'all' ? '' : label + ' '}material${visible !== 1 ? 's' : ''}`;
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+</script>
+
+</body>
+</html>
