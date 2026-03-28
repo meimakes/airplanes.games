@@ -440,24 +440,28 @@
   </div>
 </section>
 
-<section class="why-play" style="margin-top:10px;">
-  <h2>🧸 Recommended Materials</h2>
-  <p class="why-sub">Hands-on toys and tools that pair perfectly with these games.</p>
-  <a href="materials.html" style="display:inline-block;padding:12px 28px;background:#4A90D9;color:#fff;border-radius:14px;text-decoration:none;font-size:16px;font-weight:700;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(0.9)'" onmouseout="this.style.filter='none'">Browse Materials →</a>
-</section>
-
-<section style="max-width:520px;margin:24px auto;padding:0 16px;">
-  <div style="background:rgba(255,255,255,0.92);border-radius:18px;padding:28px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-    <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#4A90D9;font-weight:700;margin-bottom:6px;">Weekly Flight Plan</div>
-    <h2 style="font-size:20px;color:#333;margin-bottom:6px;">New activities in your inbox</h2>
-    <p style="font-size:14px;color:#666;line-height:1.5;margin-bottom:16px;">Free weekly ideas for building, learning, and playing with your kid</p>
-    <form id="emailCaptureForm" onsubmit="return handleEmailCapture(event)" style="display:flex;gap:8px;max-width:400px;margin:0 auto;">
-      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address" style="flex:1;font-family:'Fredoka',sans-serif;font-size:15px;padding:10px 14px;border:2px solid #ddd;border-radius:12px;outline:none;color:#333;background:#fff;" onfocus="this.style.borderColor='#4A90D9'" onblur="this.style.borderColor='#ddd'">
-      <button type="submit" id="emailCaptureBtn" style="font-family:'Fredoka',sans-serif;font-size:14px;font-weight:700;padding:10px 20px;background:#4A90D9;color:#fff;border:none;border-radius:12px;cursor:pointer;white-space:nowrap;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(0.9)'" onmouseout="this.style.filter='none'">Subscribe</button>
-    </form>
-    <p id="emailCaptureStatus" aria-live="polite" style="font-size:13px;margin-top:10px;min-height:1.2em;"></p>
-    <p style="font-size:12px;color:#aaa;margin-top:6px;">Delivered via <a href="https://raisingpixels.dev" target="_blank" rel="noopener noreferrer" style="color:#aaa;text-decoration:underline;">Raising Pixels</a></p>
+<section style="max-width:960px;margin:24px auto;padding:0 16px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="cta-row">
+    <!-- Materials CTA -->
+    <div style="background:rgba(255,255,255,0.92);border-radius:18px;padding:28px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;">
+      <h2 style="font-size:20px;color:#333;margin-bottom:6px;">🧸 Recommended Materials</h2>
+      <p style="font-size:14px;color:#666;line-height:1.5;margin-bottom:16px;">Hands-on toys and tools that pair perfectly with these games</p>
+      <a href="materials.html" style="display:inline-block;padding:12px 28px;background:#4A90D9;color:#fff;border-radius:12px;text-decoration:none;font-size:15px;font-weight:700;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(0.9)'" onmouseout="this.style.filter='none'">Browse Materials →</a>
+    </div>
+    <!-- Email Capture -->
+    <div style="background:rgba(255,255,255,0.92);border-radius:18px;padding:28px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;">
+      <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#4A90D9;font-weight:700;margin-bottom:6px;">Weekly Flight Plan</div>
+      <h2 style="font-size:20px;color:#333;margin-bottom:6px;">New activities in your inbox</h2>
+      <p style="font-size:14px;color:#666;line-height:1.5;margin-bottom:16px;">Free weekly ideas for building, learning, and playing with your kid</p>
+      <form id="emailCaptureForm" onsubmit="return handleEmailCapture(event)" style="display:flex;gap:8px;width:100%;max-width:360px;">
+        <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address" style="flex:1;font-family:'Fredoka',sans-serif;font-size:15px;padding:10px 14px;border:2px solid #ddd;border-radius:12px;outline:none;color:#333;background:#fff;min-width:0;" onfocus="this.style.borderColor='#4A90D9'" onblur="this.style.borderColor='#ddd'">
+        <button type="submit" id="emailCaptureBtn" style="font-family:'Fredoka',sans-serif;font-size:14px;font-weight:700;padding:10px 20px;background:#4A90D9;color:#fff;border:none;border-radius:12px;cursor:pointer;white-space:nowrap;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(0.9)'" onmouseout="this.style.filter='none'">Subscribe</button>
+      </form>
+      <p id="emailCaptureStatus" aria-live="polite" style="font-size:13px;margin-top:10px;min-height:1.2em;"></p>
+      <p style="font-size:12px;color:#aaa;margin-top:6px;">Delivered via <a href="https://raisingpixels.dev" target="_blank" rel="noopener noreferrer" style="color:#aaa;text-decoration:underline;">Raising Pixels</a></p>
+    </div>
   </div>
+  <style>.cta-row{grid-template-columns:1fr 1fr!important}@media(max-width:640px){.cta-row{grid-template-columns:1fr!important}}</style>
 </section>
 
 <footer>
