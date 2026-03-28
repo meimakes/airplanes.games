@@ -446,10 +446,80 @@
   <a href="materials.html" style="display:inline-block;padding:12px 28px;background:#4A90D9;color:#fff;border-radius:14px;text-decoration:none;font-size:16px;font-weight:700;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(0.9)'" onmouseout="this.style.filter='none'">Browse Materials →</a>
 </section>
 
+<section style="max-width:520px;margin:24px auto;padding:0 16px;">
+  <div style="background:rgba(255,255,255,0.92);border-radius:18px;padding:28px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+    <div style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:#4A90D9;font-weight:700;margin-bottom:6px;">Weekly Flight Plan</div>
+    <h2 style="font-size:20px;color:#333;margin-bottom:6px;">New activities in your inbox</h2>
+    <p style="font-size:14px;color:#666;line-height:1.5;margin-bottom:16px;">Free weekly ideas for building, learning, and playing with your kid</p>
+    <form id="emailCaptureForm" onsubmit="return handleEmailCapture(event)" style="display:flex;gap:8px;max-width:400px;margin:0 auto;">
+      <input type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address" style="flex:1;font-family:'Fredoka',sans-serif;font-size:15px;padding:10px 14px;border:2px solid #ddd;border-radius:12px;outline:none;color:#333;background:#fff;" onfocus="this.style.borderColor='#4A90D9'" onblur="this.style.borderColor='#ddd'">
+      <button type="submit" id="emailCaptureBtn" style="font-family:'Fredoka',sans-serif;font-size:14px;font-weight:700;padding:10px 20px;background:#4A90D9;color:#fff;border:none;border-radius:12px;cursor:pointer;white-space:nowrap;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(0.9)'" onmouseout="this.style.filter='none'">Subscribe</button>
+    </form>
+    <p id="emailCaptureStatus" aria-live="polite" style="font-size:13px;margin-top:10px;min-height:1.2em;"></p>
+    <p style="font-size:12px;color:#aaa;margin-top:6px;">Delivered via <a href="https://raisingpixels.dev" target="_blank" rel="noopener noreferrer" style="color:#aaa;text-decoration:underline;">Raising Pixels</a></p>
+  </div>
+</section>
+
 <footer>
   <div>Made by <a href="https://x.com/meimakes" style="color:rgba(255,255,255,0.9);text-decoration:underline;">@meimakes</a></div>
   <div style="margin-top:6px;"><a href="https://buildwithyourkid.com" style="color:rgba(255,255,255,0.9);text-decoration:underline;">Want to make your own games with your kid?</a></div>
 </footer>
+
+<script>
+function handleEmailCapture(e) {
+  e.preventDefault();
+  var form = document.getElementById('emailCaptureForm');
+  var btn = document.getElementById('emailCaptureBtn');
+  var status = document.getElementById('emailCaptureStatus');
+  var email = form.email.value.trim();
+  if (!email) return false;
+
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  btn.style.opacity = '0.5';
+  status.textContent = '';
+
+  var iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.name = 'substack-capture-' + Date.now();
+  document.body.appendChild(iframe);
+
+  var proxyForm = document.createElement('form');
+  proxyForm.method = 'POST';
+  proxyForm.action = 'https://www.raisingpixels.dev/api/v1/free';
+  proxyForm.target = iframe.name;
+  proxyForm.style.display = 'none';
+
+  var fields = {
+    email: email,
+    first_url: 'https://airplanes.games/',
+    current_url: window.location.href,
+    current_referrer: document.referrer || '',
+    type: 'subscribe'
+  };
+  for (var k in fields) {
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = k;
+    input.value = fields[k];
+    proxyForm.appendChild(input);
+  }
+
+  document.body.appendChild(proxyForm);
+  proxyForm.submit();
+
+  setTimeout(function() {
+    status.textContent = "You're in — check your inbox for a welcome email";
+    status.style.color = '#4A90D9';
+    btn.textContent = 'Subscribed';
+    form.email.value = '';
+    if (window.plausible) plausible('Email Capture', { props: { source: 'airplanes-games' } });
+    setTimeout(function() { iframe.remove(); proxyForm.remove(); }, 5000);
+  }, 2000);
+
+  return false;
+}
+</script>
 
 </body>
 </html>
