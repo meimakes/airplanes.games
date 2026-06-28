@@ -470,7 +470,7 @@
 </footer>
 
 <script>
-function handleEmailCapture(e) {
+async function handleEmailCapture(e) {
   e.preventDefault();
   var form = document.getElementById('emailCaptureForm');
   var btn = document.getElementById('emailCaptureBtn');
@@ -483,43 +483,32 @@ function handleEmailCapture(e) {
   btn.style.opacity = '0.5';
   status.textContent = '';
 
-  var iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.name = 'substack-capture-' + Date.now();
-  document.body.appendChild(iframe);
+  try {
+    var response = await fetch('https://raisingpixels.dev/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        source: 'airplanes-games',
+        current_url: window.location.href,
+        current_referrer: document.referrer || ''
+      })
+    });
+    var payload = await response.json().catch(function() { return {}; });
+    if (!response.ok) throw new Error(payload.error || 'Something went wrong.');
 
-  var proxyForm = document.createElement('form');
-  proxyForm.method = 'POST';
-  proxyForm.action = 'https://www.raisingpixels.dev/api/v1/free';
-  proxyForm.target = iframe.name;
-  proxyForm.style.display = 'none';
-
-  var fields = {
-    email: email,
-    first_url: 'https://airplanes.games/',
-    current_url: window.location.href,
-    current_referrer: document.referrer || '',
-    type: 'subscribe'
-  };
-  for (var k in fields) {
-    var input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = k;
-    input.value = fields[k];
-    proxyForm.appendChild(input);
-  }
-
-  document.body.appendChild(proxyForm);
-  proxyForm.submit();
-
-  setTimeout(function() {
     status.textContent = "You're in — check your inbox for a welcome email";
     status.style.color = '#4A90D9';
     btn.textContent = 'Subscribed';
     form.email.value = '';
     if (window.plausible) plausible('Email Capture', { props: { source: 'airplanes-games' } });
-    setTimeout(function() { iframe.remove(); proxyForm.remove(); }, 5000);
-  }, 2000);
+  } catch (error) {
+    status.textContent = error.message || 'Something went wrong. Please try again.';
+    status.style.color = '#C2410C';
+    btn.disabled = false;
+    btn.textContent = 'Subscribe';
+    btn.style.opacity = '1';
+  }
 
   return false;
 }
